@@ -47,7 +47,7 @@ data_mahachkala = all_mahachkala %>%
          year=year(date),
          month=month(date)) %>%
   mutate(tavg=case_when( tavg<50 ~ 0, TRUE ~ tavg)/10) %>% 
-  filter (year>2012 & year < 2017) %>% 
+  filter (year>2013 & year<2016) %>% 
   group_by(id,year,month) %>% 
   summarize(tsum = sum(tavg,na.rm=TRUE)) %>% 
   mutate(tsum=case_when(tsum==NA~0, TRUE ~ tsum)) %>% ungroup() %>% 
@@ -71,4 +71,4 @@ data_mahachkala = data_mahachkala %>%
 data_mahachkala= data_mahachkala %>% mutate(Yj=(((data_mahachkala$Fi)*(di)*Kf)/(Qj*Lj*(100-Ej))))
 #Расчитываем суммарную урожайность как сумму по месяцам
 YIELD=sum(data_mahachkala$Yj);YIELD
-# Ответ: 8.06 ц/га
+# Ответ: 6.5 ц/га
